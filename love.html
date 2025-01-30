@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Full-screen black background */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Loading Spinner */
+        .loading-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);  /* Black overlay with opacity */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loading-spinner {
+            border: 8px solid #f3f3f3; /* Light grey background */
+            border-top: 8px solid #ff4081; /* Pink color for the top */
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+
+        /* Spin animation */
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Message that appears until February 14 */
+        .message-container {
+            text-align: center;
+            color: #fff;
+        }
+
+        .message-container h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .message-container p {
+            font-size: 24px;
+            color: #ff4081;
+        }
+
+        .dashboard-container {
+            display: none;
+            text-align: center;
+        }
+
+        .dashboard-container h1 {
+            font-size: 36px;
+            color: #333;
+        }
+
+        .dashboard-container p {
+            font-size: 18px;
+            color: #777;
+        }
+
+        .dashboard-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .dashboard-container button:hover {
+            background-color: #e040fb;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div class="loading-container" id="loading">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Message that appears until February 14 -->
+    <div class="message-container" id="waitMessage" style="display: none;">
+        <h1>We're just getting started...</h1>
+        <p>Please wait until February 14 for the full experience!</p>
+    </div>
+
+ 
+    <script>
+        window.onload = function() {
+            // Get the current date
+            const currentDate = new Date();
+            const targetDate = new Date(currentDate.getFullYear(), 1, 14); // February 14 of the current year
+
+            // Simulate a short loading delay (2 seconds)
+            setTimeout(function() {
+                // Check if the current date is before February 14
+                if (currentDate < targetDate) {
+                    // Show the wait message and hide the loading spinner
+                    document.getElementById("waitMessage").style.display = "block";
+                    document.getElementById("loading").style.display = "none";
+                    document.getElementById("dashboard").style.display = "none";
+                } else {
+                    // If it's February 14 or later, show the dashboard content
+                    document.getElementById("loading").style.display = "none";
+                    document.getElementById("dashboard").style.display = "block";
+                    document.getElementById("waitMessage").style.display = "none";
+                }
+            }, 2000); // Delay the transition by 2 seconds
+        };
+    </script>
+</body>
+</html>
