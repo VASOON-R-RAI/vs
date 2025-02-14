@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Valentine's Day Card</title>
+  <style>
+    body {
+      background-color: #ffe6f2;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding-top: 10%;
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    h1 {
+      color: #e91e63;
+      font-size: 3em;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    /* Card Container */
+    .card {
+      width: 350px;
+      height: 450px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 10px;
+      border: 5px solid #e91e63;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+      transform: scale(0);
+      transform-origin: center;
+      transition: transform 1s ease;
+    }
+
+    .card.open {
+      transform: scale(1);
+    }
+
+    /* Card front */
+    .card .front {
+      background-color: #e91e63;
+      color: white;
+      padding: 40px;
+      text-align: center;
+      font-size: 1.5em;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    /* Card back */
+    .card .back {
+      background-color: #fff0f5;
+      color: #e91e63;
+      padding: 30px;
+      font-size: 1.2em;
+      font-weight: bold;
+      text-align: center;
+      display: none;
+      border-top: 5px solid #e91e63;
+      border-radius: 0 0 10px 10px;
+    }
+
+    .card.open .back {
+      display: block;
+    }
+
+    /* Heart Falling Animation */
+    .falling-heart {
+      position: absolute;
+      top: -50px;
+      font-size: 2em;
+      color: #e91e63;
+      animation: fall 5s infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        top: -50px;
+        opacity: 1;
+      }
+      50% {
+        top: 100%;
+        opacity: 0.5;
+      }
+      100% {
+        top: 100%;
+        opacity: 0;
+      }
+    }
+
+    /* Randomize the position of falling hearts */
+    .falling-heart:nth-child(1) {
+      left: 10%;
+      animation-duration: 4s;
+      animation-delay: 0s;
+    }
+
+    .falling-heart:nth-child(2) {
+      left: 20%;
+      animation-duration: 6s;
+      animation-delay: 1s;
+    }
+
+    .falling-heart:nth-child(3) {
+      left: 30%;
+      animation-duration: 5s;
+      animation-delay: 2s;
+    }
+
+    .falling-heart:nth-child(4) {
+      left: 40%;
+      animation-duration: 7s;
+      animation-delay: 3s;
+    }
+
+    .falling-heart:nth-child(5) {
+      left: 50%;
+      animation-duration: 6s;
+      animation-delay: 1s;
+    }
+
+    /* Button to open the card */
+    .open-btn {
+      background-color: #e91e63;
+      color: white;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .open-btn:hover {
+      background-color: #c2185b;
+    }
+
+    /* Resize the Image */
+    .card .front img {
+      width: 80%; /* Adjust width here */
+      max-width: 300px; /* Optional: limits the width to 300px */
+      height: auto;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+
+    /* Media Query for mobile devices */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2em; /* Make the header smaller on small screens */
+      }
+
+      .card {
+        width: 90%; /* Make the card take up more width on mobile */
+        height: auto; /* Adjust height proportionally */
+      }
+
+      .card .front img {
+        width: 100%; /* Make the image take up the full width on mobile */
+        max-width: none; /* Remove max-width limit */
+      }
+
+      .falling-heart {
+        font-size: 1.5em; /* Adjust the size of the hearts for smaller screens */
+      }
+    }
+
+    /* Media Query for tablets */
+    @media (max-width: 1024px) {
+      .card {
+        width: 70%; /* Slightly larger card for tablets */
+      }
+
+      h1 {
+        font-size: 2.5em; /* Adjust heading size for tablets */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Happy Valentine's Day Baale!</h1>
+
+  <!-- Falling Hearts -->
+  <div class="falling-heart">❤️</div>
+  <div class="falling-heart">❤️</div>
+  <div class="falling-heart">❤️</div>
+  <div class="falling-heart">❤️</div>
+  <div class="falling-heart">❤️</div>
+
+  <!-- Card Container -->
+  <div class="card" id="valentines-card">
+    <div class="front">
+      <p>Click to Open the Card!</p>
+      
+    </div>
+    <div class="back">
+      <p>"You are my forever, my always, my everything!"</p>
+    </div>
+  </div>
+
+  <!-- Button to trigger card opening -->
+  <button class="open-btn" onclick="openCard()">Open the Card</button>
+
+  <script>
+    // Function to trigger card opening
+    function openCard() {
+      const card = document.getElementById('valentines-card');
+      card.classList.add('open');
+    }
+  </script>
+
+</body>
+</html>
